@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      android:versionCode="1"
+      android:versionName="1.0" package="it.polimi.dei.dbgroup.pedigree.androjena.test">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+
+
+    <uses-library android:name="android.test.runner"></uses-library>
+<activity android:label="@string/jena_test_activity_label" android:icon="@drawable/icon" android:name="AndrojenaTestActivity" android:configChanges="keyboardHidden|orientation"><intent-filter><action android:name="android.intent.action.MAIN"></action>
+<category android:name="android.intent.category.LAUNCHER"></category>
+</intent-filter>
+</activity>
+</application>
+    <uses-sdk android:minSdkVersion="2" />
+
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
+</manifest> 

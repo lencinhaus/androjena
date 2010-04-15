@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+<Button android:layout_width="fill_parent" android:id="@+id/start_button" android:layout_height="wrap_content" android:text="@string/start_tests"></Button>
+
+<CheckBox android:layout_height="wrap_content" android:layout_width="fill_parent" android:text="@string/only_log_errors_and_failures" android:id="@+id/log_checkbox"></CheckBox><ScrollView android:id="@+id/ScrollView01" android:layout_height="wrap_content" android:layout_width="fill_parent"><TextView android:layout_height="wrap_content" android:id="@+id/output_textview" android:layout_width="wrap_content"></TextView></ScrollView>
+
+</LinearLayout>
