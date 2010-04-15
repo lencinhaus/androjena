@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="only_log_errors_and_failures">only log errors and failures</string>
+    <string name="jena_test_activity_label">AndroJena Tests</string>
+    
+    <string name="app_name">AndroJena Tests</string>
+<string name="start_tests">start tests</string>
+<string name="stop_tests">stop tests</string>
+</resources>
