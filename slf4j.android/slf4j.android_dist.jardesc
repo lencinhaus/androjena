@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="slf4j.android/dist/slf4j.android.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/slf4j.android/slf4j.android_dist.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.spi{MarkerFactoryBinder.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{LoggerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{Util.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{ILoggerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{MessageFormatter.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{MarkerIgnoringBase.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{MDC.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{BasicMDCAdapter.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.spi{LocationAwareLogger.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.spi{LoggerFactoryBinder.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{Marker.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.spi{MDCAdapter.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{Logger.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{IMarkerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{SubstituteLoggerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.impl"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{BasicMarker.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{NOPLogger.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j{MarkerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{BasicMarkerFactory.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{NOPMakerAdapter.java"/>
+        <javaElement handleIdentifier="=slf4j.android/src&lt;org.slf4j.helpers{NamedLoggerBase.java"/>
+    </selectedElements>
+</jardesc>
