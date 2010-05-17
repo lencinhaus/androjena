@@ -60,7 +60,7 @@ public class AndroidLoggerFactory implements ILoggerFactory
 		loggerMap = new HashMap<String, AndroidLogger>();
 	}
 
-	//ANDROID modified method signature and introduced name length check
+	//ANDROID introduced name length check
 	/* @see org.slf4j.ILoggerFactory#getLogger(java.lang.String) */
 	public AndroidLogger getLogger(String name)
 	{
