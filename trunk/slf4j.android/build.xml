@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/05/2010 02.11.38                                                        
+
+     SLF4J-android   
+     Porting of SLF4J to Android with some corrections.
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="slf4j.android" default="slf4j-all" basedir=".">
+	<description>
+            slf4j.android build file
+    </description>
+
+	<property name="slf4j.android.version" value="1.5.8" />
+	<dirname property="slf4j.android.dir" file="${ant.file.slf4j.android}"/>
+	<property name="slf4j.android.bin.dir" value="${slf4j.android.dir}/bin" />
+	<property name="slf4j.android.jar.dir" value="${slf4j.android.dir}/dist" />
+	<property name="slf4j.android.jar.path" value="${slf4j.android.jar.dir}/slf4j.android_${slf4j.android.version}.jar" />
+	<target name="slf4j-clean">
+		<delete dir="${slf4j.android.jar.dir}" />
+	</target>
+	<target name="slf4j-jar">
+		<mkdir dir="${slf4j.android.jar.dir}" />
+		<jar destfile="${slf4j.android.jar.path}" basedir="${slf4j.android.bin.dir}" />
+	</target>
+	<target name="slf4j-all" depends="slf4j-jar" />
+</project>
