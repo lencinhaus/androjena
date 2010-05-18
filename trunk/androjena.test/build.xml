@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/05/2010 02.11.38                                                        
+
+     Androjena Tests
+     Porting of Hewlett-Packard's Jena semantic web framework to Google Android platform,
+     Test framework
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="androjena.test" default="androjena-test-all" basedir=".">
+	<description>
+            androjena.test build file
+    </description>
+
+	<property name="androjena.test.version" value="0.1" />
+	<dirname property="androjena.test.dir" file="${ant.file.androjena.test}"/>
+	<property name="androjena.test.bin.dir" value="${androjena.test.dir}/bin" />
+	<property name="androjena.test.jar.dir" value="${androjena.test.dir}/dist" />
+	<property name="androjena.test.jar.path" value="${androjena.test.jar.dir}/androjena.test_${androjena.test.version}.jar" />
+	<property name="androjena.test.testing.dir" value="${androjena.test.dir}/testing" />
+	<property name="androjena.test.jar.testing.dir" value="testing" />
+	<target name="androjena-test-clean">
+		<delete dir="${androjena.test.jar.dir}" />
+	</target>
+	<target name="androjena-test-jar">
+		<mkdir dir="${androjena.test.jar.dir}" />
+		<jar destfile="${androjena.test.jar.path}">
+			<fileset dir="${androjena.test.bin.dir}" />
+			<zipfileset dir="${androjena.test.testing.dir}" prefix="${androjena.test.jar.testing.dir}" />
+		</jar>
+	</target>
+	<target name="androjena-test-all" depends="androjena-test-jar" />
+</project>
