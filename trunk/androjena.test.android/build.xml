@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/05/2010 02.11.38                                                        
+
+     Androjena Tests Android Application
+     Porting of Hewlett-Packard's Jena semantic web framework to Google Android platform,
+     Android test application
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="androjena.test.android" default="androjena-test-android-all" basedir=".">
+	<description>
+            androjena.test.android build file
+    </description>
+
+	<property name="androjena.test.android.version" value="0.1" />
+	<dirname property="androjena.test.android.dir" file="${ant.file.androjena.test.android}"/>
+	<property name="androjena.test.android.lib.dir" value="${androjena.test.android.dir}/lib" />
+	<property name="androjena.test.android.slf4j.android.dir" value="../slf4j.android" />
+	<property name="androjena.test.android.androjena.dir" value="../androjena" />
+	<property name="androjena.test.android.androjena.test.dir" value="../androjena.test" />
+	<import file="${androjena.test.android.slf4j.android.dir}/build.xml" />
+	<import file="${androjena.test.android.androjena.dir}/build.xml" />
+	<import file="${androjena.test.android.androjena.test.dir}/build.xml" />
+	<target name="androjena-test-android-lib" depends="slf4j-jar, androjena-jar, androjena-test-jar">
+		<copy file="${slf4j.android.jar.path}" todir="${androjena.test.android.lib.dir}" />
+		<copy file="${androjena.jar.path}" todir="${androjena.test.android.lib.dir}" />
+		<copy file="${androjena.test.jar.path}" todir="${androjena.test.android.lib.dir}" />
+		<copy todir="${androjena.test.android.lib.dir}">
+			<fileset dir="${androjena.lib.dir}" includes="*.jar" />
+		</copy>
+	</target>
+	<target name="androjena-test-android-all" depends="androjena-test-android-lib" />
+</project>
