@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/mag/2010 02.11.38                                                        
+
+     project    
+     description
+                   
+     Secco                                                                
+     ====================================================================== -->
+<project name="project" default="release">
+	<description>
+            androjena build file
+    </description>
+	<property name="rel" value="releases" />
+	<property name="jar" value="dist" />
+	<property name="libs" value="lib" />
+	<property name="lics" value="licenses" />
+	<property name="slf4jdist" value="../slf4j.android/dist" />
+	<target name="release">
+		<delete file="${rel}/androjena.zip" />
+		<zip destfile="${rel}/androjena.zip">
+			<zipfileset dir="${jar}" includes="androjena.jar" prefix="lib" />
+			<zipfileset dir="${libs}" includes="*.jar" prefix="lib" />
+			<zipfileset dir="${lics}" prefix="licences" />
+			<zipfileset dir="${slf4jdist}" includes="slf4j.android.jar" prefix="lib" />
+			<zipfileset dir="." includes="README" />
+		</zip>
+	</target>
+
+</project>
