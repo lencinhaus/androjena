@@ -1,30 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ====================================================================== 
-     18/mag/2010 02.11.38                                                        
+     18/05/2010 02.11.38                                                        
 
-     project    
-     description
+     Androjena   
+     Porting of Hewlett-Packard's Jena semantic web framework to Google Android platform
                    
-     Secco                                                                
+     Lorenzo Carrara (lorecarra@gmail.com)
      ====================================================================== -->
-<project name="project" default="release">
+<project name="androjena" default="androjena-all" basedir=".">
 	<description>
             androjena build file
     </description>
-	<property name="rel" value="releases" />
-	<property name="jar" value="dist" />
-	<property name="libs" value="lib" />
-	<property name="lics" value="licenses" />
-	<property name="slf4jdist" value="../slf4j.android/dist" />
-	<target name="release">
-		<delete file="${rel}/androjena.zip" />
-		<zip destfile="${rel}/androjena.zip">
-			<zipfileset dir="${jar}" includes="androjena.jar" prefix="lib" />
-			<zipfileset dir="${libs}" includes="*.jar" prefix="lib" />
-			<zipfileset dir="${lics}" prefix="licences" />
-			<zipfileset dir="${slf4jdist}" includes="slf4j.android.jar" prefix="lib" />
-			<zipfileset dir="." includes="README" />
+
+	<property name="androjena.version" value="0.1" />
+	<dirname property="androjena.dir" file="${ant.file.androjena}"/>
+	<property name="androjena.bin.dir" value="${androjena.dir}/bin" />
+	<property name="androjena.jar.dir" value="${androjena.dir}/dist" />
+	<property name="androjena.jar.path" value="${androjena.jar.dir}/androjena_${androjena.version}.jar" />
+	<property name="androjena.release.dir" value="${androjena.dir}/dist" />
+	<property name="androjena.release.path" value="${androjena.release.dir}/androjena_${androjena.version}.zip" />
+	<property name="androjena.lic.dir" value="${androjena.dir}/licenses" />
+	<property name="androjena.vocabularies.dir" value="${androjena.dir}/vocabularies" />
+	<property name="androjena.jar.vocabularies.dir" value="vocabularies" />
+	<property name="androjena.etc.dir" value="${androjena.dir}/etc" />
+	<property name="androjena.jar.etc.dir" value="etc" />
+	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
+	<property name="androjena.release.lib.dir" value="lib" />
+	<property name="androjena.release.lic.dir" value="licenses" />
+	<property name="androjena.slf4j.android.dir" value="../slf4j.android" />
+	<import file="${androjena.slf4j.android.dir}/build.xml" />
+	<target name="androjena-clean">
+		<delete dir="${androjena.jar.dir}" />
+		<delete dir="${androjena.release.dir}" />
+	</target>
+	<target name="androjena-jar">
+		<mkdir dir="${androjena.jar.dir}" />
+		<jar destfile="${androjena.jar.path}">
+			<fileset dir="${androjena.bin.dir}" />
+			<zipfileset dir="${androjena.etc.dir}" prefix="${androjena.jar.etc.dir}" />
+			<zipfileset dir="${androjena.vocabularies.dir}" prefix="${androjena.jar.vocabularies.dir}" />
+		</jar>
+	</target>
+	<target name="androjena-release" depends="androjena-jar, slf4j-jar">
+		<zip destfile="${androjena.release.path}">
+			<zipfileset dir="${androjena.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${slf4j.android.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
+			<zipfileset dir="${androjena.dir}/." includes="README" />
 		</zip>
 	</target>
-
+	<target name="androjena-all" depends="androjena-release" />
 </project>
