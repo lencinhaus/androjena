@@ -1,0 +1,45 @@
+#summary How-to checkout sources, build and contribute to Androjena
+#labels Phase-Implementation,Phase-Deploy
+= Introduction =
+
+This page explains how to checkout Androjena source code, build it and contribute to the development process.
+Androjena has been developed using [http://www.eclipse.org Eclipse IDE] 3.5 (Galileo), so in this tutorial I'll assume that it is the development environment of your choice. 
+
+= Source checkout =
+
+  # If you don't have it already, download and install the [http://d.android.com/sdk/index.html Android SDK] following the instructions on the site.
+  # Open Eclipse. If you don't already have a workspace, or don't want to use it, create a new one in a location of your choice.
+  # If you don't have it already, install the [http://d.android.com/sdk/eclipse-adt.html ADT Eclipse plugin]. Then, configure the plugin to point to the Android SDK installation folder.
+  # Your Android SDK *MUST* be equipped with the *SDK Platform Android 1.5, API 3, revision 4*. If it's not, open the *Android SDK and AVD Manager*, download and install that package.
+  # If you don't have one already, install a [http://subversion.tigris.org Subversion] client Eclipse plugin. I use [http://subclipse.tigris.org Subclipse], and I'll just give instructions for checking out the source with that plugin, but it's just the same process with any other plugin. 
+  # Now that your Eclipse installation is Subversion-enabled, click *File*->*Import*. In the *SVN* folder, choose *Checkout projects from SVN*, and click *Next*.
+  # Select *Create a new repository location* and click *Next*.
+  # Enter the url of Androjena SVN repository (you can find it under the *Source* tab on this site). As of this writing, the url is [https://androjena.googlecode.com/svn/trunk/]. Click *Next*.
+  # Select all the projects under the trunk folder and click *Finish*.
+  # The checkout process will take a looong while. When the it's finished, you will findthe *androjena* project and all the other projects it depends on in your workspace. Eclipse will mark lots of errors, but it's ok: they'll be sorted out during the build step.
+
+
+= Building Androjena=
+
+By now, Androjena consists of four different projects:
+  * *slf4j.android*: this project is sort of a "branch" of the official [http://www.slf4j.org SLF4J] [http://www.slf4j.org/android Android porting]. SLF4J is a logging façade which Jena uses to abstract from the low-level logging mechanism (which, in the original Java SE version, is [http://logging.apache.org/log4j Apache log4j]). The SLF4J Android porting just redirects all the logging calls to Android's builtin logging system. However, the most recent version (1.5.8 by now) didn't take into account the Android's log tag length limit of 23 characters, so, when Jena tried to instantiate a Logger with a name longer than that, an Exception was thrown. This fork solves that issue, which has been notified to SLF4J-android maintainers; if a patch will be integrated in a future release of SLF4J-android, there will be no need for this project.
+  * *androjena*: this is the "main" project. It contains all the original Jena 2.6.2 source code, patched to run on Android.
+  * *androjena.test*: this project contains all the source code and test resources from the original Jena 2.6.2 test suite. This code too has been patched to comply with Android's "stripped-down" classpath and to solve other issues.
+  * *androjena.test.android*: this is an Android application project, which contains a simple Activity to run the tests in *android.test*. The ADT plugin provides some nice testing facilities, but I didn't manage to run Jena tests with them. After many tries, I think the reason is that the AndroidTestRunner cannot run test cases with an overridden runTest method (and Jena tests are mostly of that kind). Maybe in future releases of the SDK there will be no need for this application, but by now it comes pretty handy. It consists of a single Activity with a "start tests" button, and a panel where test results and statistics are shown in real time. Tests can be stopped at any time, and test results are sent out as logs, which can be easily captured with adb logcat or Eclipse's LogCat view.
+
+The projects have been listed in "dependency order": every project depends on the previous ones.
+
+So, let's start where the checkout ended:
+
+  # Eclipse will probably mark a lot of errors, most of them due to "missing 1.5 code compliance". I don't know why this happens, but it can be solved quite easily: just uncheck *Project*->*Build Automatically*, then click *Project*->*Clean*, choose *Clean all projects*, *Start a build immediately*, *Build the entire workspace* and then *Ok*. When the build finishes, only *androjena.test.android* should contain errors, which will be solved in the following steps.
+  # Open the *Extenal tools* context menu and choose *External tools configurations*.
+  # Double click *Ant build* to create a new configuration, and name it *androjena.test.android*.
+  # Click *Browse Workspace* under *Buildfile*, choose the *androjena.test.android* folder, and the *build.xml* file inside it. Click *Ok*.
+  # Under the *Build* tab, uncheck *Build before launch*, then click *Run*.
+  # When the buildfile is done, click *Project*->*Build Project*, and when it's finished all errors should be gone.
+
+The Ant buildfile under androjena.test.android does the following: it calls the buildfiles under the other projects in order to package slf4j.android, androjena and androjena.test in jar archives under the respective *dist* folders, then copies those jars (and other needed jars) inside androjena.test.android lib folder. You may be asking yourself why not to reference the projects directly so that their code is resolved and included in the final package. This can't be done for two reasons: Android doesn't include referenced project's code inside the application package, and, most importantly, it doesn't include non-java resources which may be needed by the other libraries. The only way to do this, is to reference the jar files in the buildpath (and androjena.test.android is already configured to do that): this way, all code and resources are packaged inside the final apk package, and can be referenced inside the android application.
+
+Once you've done all this, the androjena.test.android application package should be ready to be installed. This can be done manually with adb, or just selecting the androjena.test.android project in the *Package Explorer*, and clicking *Run As*, *Android Application*. Depending on your ADT configuration, you will be asked for a device to run the application on, and you can run it in an AVD or in a real device.
+
+For a more detailed description of Androjena's test suite support on the emulator and real devices, please refer to AndrojenaTesting
