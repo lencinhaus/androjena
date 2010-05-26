@@ -14,7 +14,7 @@ package com.hp.hpl.jena.datatypes.xsd.impl;
 
 import com.hp.hpl.jena.datatypes.xsd.*;
 
-//ANDROID: user defined datatypes are not supported in this release of aJena, so 
+//ANDROID: user defined datatypes are not supported in this release of Androjena, so 
 // this class content is commented, and the class is just here as a reminder
 /**
  * Datatype template that adapts any response back from Xerces type parsing

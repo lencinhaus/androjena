@@ -363,7 +363,7 @@ public class XSDDatatype extends BaseDatatype {
 			String encoding, TypeMapper tm) throws DatatypeFormatException {
 		// ANDROID: user defined datatypes are disabled for now, due to the
 		// simplified XSD structure we're using
-		throw new UnsupportedOperationException("user defined datatypes are not supported in this release of aJena");
+		throw new UnsupportedOperationException("user defined datatypes are not supported in this release of Androjena");
 //		return loadUserDefined(new XMLInputSource(null, uri, uri, reader,
 //				encoding), tm);
 	}
@@ -391,7 +391,7 @@ public class XSDDatatype extends BaseDatatype {
 			TypeMapper tm) throws DatatypeFormatException {
 		// ANDROID: user defined datatypes are disabled for now, due to the
 		// simplified XSD structure we're using
-		throw new UnsupportedOperationException("user defined datatypes are not supported in this release of aJena");
+		throw new UnsupportedOperationException("user defined datatypes are not supported in this release of Androjena");
 //		return loadUserDefined(new XMLInputSource(null, uri, uri), tm);
 	}
 
