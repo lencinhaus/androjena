@@ -6,10 +6,11 @@
 
 
     <uses-library android:name="android.test.runner"></uses-library>
-<activity android:label="@string/jena_test_activity_label" android:icon="@drawable/icon" android:name="AndrojenaTestActivity" android:configChanges="keyboardHidden|orientation"><intent-filter><action android:name="android.intent.action.MAIN"></action>
+<activity android:icon="@drawable/icon" android:name="AndrojenaTestActivity" android:configChanges="keyboardHidden|orientation" android:label="@string/androjena_test_activity_label"><intent-filter><action android:name="android.intent.action.MAIN"></action>
 <category android:name="android.intent.category.LAUNCHER"></category>
 </intent-filter>
 </activity>
+<service android:name="AndrojenaTestService" android:label="@string/androjena_test_service_label" android:process=":service"></service>
 </application>
     <uses-sdk android:minSdkVersion="3"/>
 
