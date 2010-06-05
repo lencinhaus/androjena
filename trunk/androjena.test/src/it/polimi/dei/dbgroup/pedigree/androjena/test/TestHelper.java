@@ -49,7 +49,7 @@ public final class TestHelper {
 		while (filename.charAt(start) == '/')
 			start++;
 		filename = filename.substring(start);
-		log(old + " sanitized to " + filename);
+		if(!old.equals(filename)) log(old + " sanitized to " + filename);
 		return filename;
 	}
 	
