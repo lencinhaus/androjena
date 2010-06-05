@@ -3,10 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="lib/androjena_0.1.jar"/>
-	<classpathentry kind="lib" path="lib/androjena.test_0.1.jar"/>
-	<classpathentry kind="lib" path="lib/icu4j-3.4.4.jar"/>
-	<classpathentry kind="lib" path="lib/iri-0.7.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j.android_1.5.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/icu4j-3.4.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/iri-0.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/androjena_0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/androjena.test_0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/slf4j.android_1.5.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

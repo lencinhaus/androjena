@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="androjena_test_service_label">Androjena Test Service</string>
+    <string name="send_results_to_androjena_developers">send results to androjena developers</string>
     <string name="only_log_errors_and_failures">only log errors and failures</string>
-    <string name="jena_test_activity_label">AndroJena Tests</string>
+    <string name="androjena_test_activity_label">AndroJena Tests</string>
     
-    <string name="app_name">AndroJena Tests</string>
+    <string name="app_name">Androjena Tests</string>
 <string name="start_tests">start tests</string>
 <string name="stop_tests">stop tests</string>
+<string name="dialog_sender_result_success_format">Results successfully sent. Returned result: %s</string>
+<string name="dialog_sender_result_error_format">Cannot send test results. Error: %s</string>
+<string name="dialog_sender_disable_message">Sending test results to the Androjena dev team really helps to improve Androjena support over different devices, discover bugs and benchmark its performance. Test results are anonymous, they only contain details about test execution, host device and OS build. Are you sure you want to disable this feature?</string>
+<string name="yes">Yes</string>
+<string name="no">No</string>
+<string name="ok">Ok</string>
+<string name="dialog_intro_message">During tests execution many files will be created on this device\'s external storage, and will NOT be removed at the end. Do you want to proceed?</string>
 </resources>
