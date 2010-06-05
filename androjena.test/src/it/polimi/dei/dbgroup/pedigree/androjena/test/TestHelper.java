@@ -43,16 +43,23 @@ public final class TestHelper {
 
 	public static final String sanitizeFileName(String filename) {
 		String old = new String(filename);
-		if (filename.startsWith("file:"))
+		boolean modified = false;
+		if (filename.startsWith("file:")) {
 			filename = filename.substring("file:".length());
+			modified = true;
+		}
 		int start = 0;
 		while (filename.charAt(start) == '/')
 			start++;
-		filename = filename.substring(start);
-		if(!old.equals(filename)) log(old + " sanitized to " + filename);
+		if (start > 0) {
+			filename = filename.substring(start);
+			modified = true;
+		}
+		if (modified)
+			log(old + " sanitized to " + filename);
 		return filename;
 	}
-	
+
 	private static final void log(String s) {
 		Log.d("TestHelper", s);
 	}
@@ -85,8 +92,8 @@ public final class TestHelper {
 			throws IOException {
 		CharsetDetector detector = new CharsetDetector();
 		Reader innerReader = detector.getReader(factory.createStream(), null);
-		if(innerReader == null) innerReader = new InputStreamReader(
-				factory.createStream());
+		if (innerReader == null)
+			innerReader = new InputStreamReader(factory.createStream());
 		BufferedReader reader = new BufferedReader(innerReader);
 		String s;
 		StringBuilder sb = new StringBuilder();
@@ -105,17 +112,21 @@ public final class TestHelper {
 			String encoding = m.group(1);
 			if (encoding != null) {
 				try {
-					Reader r = detector.getReader(factory.createStream(), encoding);
-					if(r == null) r = new InputStreamReader(factory.createStream(), encoding);
+					Reader r = detector.getReader(factory.createStream(),
+							encoding);
+					if (r == null)
+						r = new InputStreamReader(factory.createStream(),
+								encoding);
 					log("detected encoding " + encoding + " for XML stream");
 					return r;
 				} catch (UnsupportedEncodingException ex) {
 				}
 			}
 		}
-		
+
 		Reader r = detector.getReader(factory.createStream(), null);
-		if(r == null) r = new InputStreamReader(factory.createStream());
+		if (r == null)
+			r = new InputStreamReader(factory.createStream());
 		log("encoding not found");
 		return r;
 	}
@@ -130,20 +141,22 @@ public final class TestHelper {
 		w.flush();
 		Log.d("TestHelper.dumpModel", w.toString());
 	}
-	
+
 	public static final File copyFile(String filename) throws IOException {
 		final byte[] buffer = new byte[1024];
 		InputStream input = openResource(filename);
-		File tempFile = File.createTempFile(FileUtils.getBasename(filename), FileUtils.getFilenameExt(filename));
+		File tempFile = File.createTempFile(FileUtils.getBasename(filename),
+				FileUtils.getFilenameExt(filename));
 		OutputStream output = new FileOutputStream(tempFile);
 		int read;
-		while((read = input.read(buffer)) != -1) {
+		while ((read = input.read(buffer)) != -1) {
 			output.write(buffer, 0, read);
 		}
 		input.close();
 		output.flush();
 		output.close();
-		log("created temp file " + tempFile.getAbsolutePath() + " for resource " + filename);
+		log("created temp file " + tempFile.getAbsolutePath()
+				+ " for resource " + filename);
 		return tempFile;
 	}
 }
