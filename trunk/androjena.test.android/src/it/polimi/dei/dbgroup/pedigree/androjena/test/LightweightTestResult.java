@@ -29,7 +29,7 @@ public class LightweightTestResult extends TestResult {
 		// just notify the fListeners without saving the failure
 		fFailureCount++;
 		for (TestListener listener : fListeners) {
-			listener.addError(test, t);
+			listener.addFailure(test, t);
 		}
 	}
 
