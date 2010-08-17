@@ -5,7 +5,7 @@
 
 ARQoid is a porting of Jena's [http://jena.sourceforge.net/ARQ ARQ] SPARQL query engine to the Android platform, for use with Androjena.
 
-*ARQoid is still under development, it's incomplete and possibly broken, it lacks some of the original ARQ features and has been tested only with very simple queries, so don't blame use if it doesn't work and use source code and binaries AT YOUR OWN RISK!*
+*ARQoid is still under development, it's incomplete and possibly broken, it lacks some of the original ARQ features and has been tested only with very simple queries, so don't blame us if it doesn't work and use source code and binaries AT YOUR OWN RISK!*
 
 However, any issue report is greatly appreciated and will help us to speed up the development process.
 
