@@ -5,7 +5,9 @@
 
 ARQoid is a porting of Jena's [http://jena.sourceforge.net/ARQ ARQ] SPARQL query engine to the Android platform, for use with Androjena.
 
-*ARQoid is still under development, it has not been tested yet, so use source code and binaries AT YOUR OWN RISK!*
+*ARQoid is still under development, it's incomplete and possibly broken, it lacks some of the original ARQ features and has been tested only with very simple queries, so don't blame use if it doesn't work and use source code and binaries AT YOUR OWN RISK!*
+
+However, any issue report is greatly appreciated and will help us to speed up the development process.
 
 Currently, ARQoid is based on source code from ARQ 2.8.3. We decided to remove the dependence over Apache Lucene, so we eliminated a lot of classes, such as all LARQ-related code and the textMatch pfunction. Moreover, we removed all code that used the javax.management api, which is not available in the Android's classpath.
 All removed classes have been moved under the "removed" folder in the versioned project, maintaining original packages.
@@ -21,4 +23,4 @@ First, follow the [BuildAndrojena instructions for checking out and building And
 
 =Usage=
 
-Simply include the generated (or downloaded) binary package as long with Androjena and its dependencies in the libraries under your Android project classpath. All Androjena and ARQoid classes will be translated into Dalvik bytecode and bundled inside your project's apk package.
+Simply include the generated (or downloaded) binary package as long with Androjena and its dependencies between the libraries under your Android project classpath. All Androjena and ARQoid classes will be translated into Dalvik bytecode and bundled inside your project's apk package.
