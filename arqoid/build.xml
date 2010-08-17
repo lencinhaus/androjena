@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/05/2010 02.11.38                                                        
+
+     ARQoid   
+     Porting of Hewlett-Packard's ARQ SPARQL Query Engine to Google Android platform,
+     for use with Androjena
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="arqoid" default="arqoid-all" basedir=".">
+	<description>
+		arqoid build file
+    </description>
+
+	<property name="arqoid.version" value="0.1" />
+	<dirname property="arqoid.dir" file="${ant.file.arqoid}"/>
+	<property name="arqoid.bin.dir" value="${arqoid.dir}/bin" />
+	<property name="arqoid.jar.dir" value="${arqoid.dir}/dist" />
+	<property name="arqoid.jar.path" value="${arqoid.jar.dir}/arqoid_${arqoid.version}.jar" />
+	<!--
+	<property name="arqoid.release.dir" value="${arqoid.dir}/dist" />
+	<property name="arqoid.release.path" value="${arqoid.release.dir}/arqoid_${arqoid.version}.zip" />
+	<property name="arqoid.lic.dir" value="${arqoid.dir}/licenses" />
+	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
+	<property name="arqoid.release.lib.dir" value="lib" />
+	<property name="arqoid.release.lic.dir" value="licenses" />
+	<property name="arqoid.androjena.dir" value="../androjena" />
+	<import file="${arqoid.androjena.dir}/build.xml" />
+	-->
+	<!--<property name="arqoid.slf4j.android.dir" value="../slf4j.android" />
+	<import file="${arqoid.slf4j.android.dir}/build.xml" />-->
+	<target name="arqoid-clean">
+		<delete dir="${arqoid.jar.dir}" />
+		<delete dir="${arqoid.release.dir}" />
+	</target>
+	<target name="arqoid-jar">
+		<mkdir dir="${arqoid.jar.dir}" />
+		<jar destfile="${arqoid.jar.path}">
+			<fileset dir="${arqoid.bin.dir}" />
+		</jar>
+	</target>
+	<!--
+	<target name="arqoid-release" depends="arqoid-jar, arqoid-jar">
+		<zip destfile="${androjena.release.path}">
+			<zipfileset dir="${androjena.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${slf4j.android.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
+			<zipfileset dir="${androjena.dir}/." includes="README" />
+		</zip>
+	</target>
+	-->
+	<target name="arqoid-all" depends="arqoid-jar" />
+</project>
