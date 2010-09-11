@@ -32,7 +32,7 @@
 	<import file="${arqoid.slf4j.android.dir}/build.xml" />-->
 	<target name="arqoid-clean">
 		<delete dir="${arqoid.jar.dir}" />
-		<delete dir="${arqoid.release.dir}" />
+		<!--<delete dir="${arqoid.release.dir}" />-->
 	</target>
 	<target name="arqoid-jar">
 		<mkdir dir="${arqoid.jar.dir}" />
