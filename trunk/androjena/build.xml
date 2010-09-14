@@ -12,7 +12,7 @@
             androjena build file
     </description>
 
-	<property name="androjena.version" value="0.1" />
+	<property name="androjena.version" value="0.2" />
 	<dirname property="androjena.dir" file="${ant.file.androjena}"/>
 	<property name="androjena.bin.dir" value="${androjena.dir}/bin" />
 	<property name="androjena.jar.dir" value="${androjena.dir}/dist" />
@@ -27,8 +27,6 @@
 	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
 	<property name="androjena.release.lib.dir" value="lib" />
 	<property name="androjena.release.lic.dir" value="licenses" />
-	<property name="androjena.slf4j.android.dir" value="../slf4j.android" />
-	<import file="${androjena.slf4j.android.dir}/build.xml" />
 	<target name="androjena-clean">
 		<delete dir="${androjena.jar.dir}" />
 		<delete dir="${androjena.release.dir}" />
@@ -41,11 +39,10 @@
 			<zipfileset dir="${androjena.vocabularies.dir}" prefix="${androjena.jar.vocabularies.dir}" />
 		</jar>
 	</target>
-	<target name="androjena-release" depends="androjena-jar, slf4j-jar">
+	<target name="androjena-release" depends="androjena-jar">
 		<zip destfile="${androjena.release.path}">
 			<zipfileset dir="${androjena.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
 			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
-			<zipfileset dir="${slf4j.android.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
 			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
 			<zipfileset dir="${androjena.dir}/." includes="README" />
 		</zip>
