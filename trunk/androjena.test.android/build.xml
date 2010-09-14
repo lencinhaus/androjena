@@ -13,17 +13,14 @@
             androjena.test.android build file
     </description>
 
-	<property name="androjena.test.android.version" value="0.1" />
+	<property name="androjena.test.android.version" value="0.2" />
 	<dirname property="androjena.test.android.dir" file="${ant.file.androjena.test.android}"/>
 	<property name="androjena.test.android.lib.dir" value="${androjena.test.android.dir}/lib" />
-	<property name="androjena.test.android.slf4j.android.dir" value="../slf4j.android" />
 	<property name="androjena.test.android.androjena.dir" value="../androjena" />
 	<property name="androjena.test.android.androjena.test.dir" value="../androjena.test" />
-	<import file="${androjena.test.android.slf4j.android.dir}/build.xml" />
 	<import file="${androjena.test.android.androjena.dir}/build.xml" />
 	<import file="${androjena.test.android.androjena.test.dir}/build.xml" />
-	<target name="androjena-test-android-lib" depends="slf4j-jar, androjena-jar, androjena-test-jar">
-		<copy file="${slf4j.android.jar.path}" todir="${androjena.test.android.lib.dir}" />
+	<target name="androjena-test-android-lib" depends="androjena-jar, androjena-test-jar">
 		<copy file="${androjena.jar.path}" todir="${androjena.test.android.lib.dir}" />
 		<copy file="${androjena.test.jar.path}" todir="${androjena.test.android.lib.dir}" />
 		<copy todir="${androjena.test.android.lib.dir}">
