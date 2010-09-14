@@ -5,6 +5,6 @@
 	<classpathentry kind="lib" path="/androjena/lib/icu4j-3.4.4.jar"/>
 	<classpathentry kind="lib" path="/androjena/lib/iri-0.7.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/androjena"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/slf4j.android"/>
+	<classpathentry kind="lib" path="/androjena/lib/slf4j-android-1.6.1-RC1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
