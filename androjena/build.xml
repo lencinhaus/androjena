@@ -14,9 +14,12 @@
 
 	<property name="androjena.version" value="0.2" />
 	<dirname property="androjena.dir" file="${ant.file.androjena}"/>
+	<property name="androjena.src.dir" value="${androjena.dir}/src" />
 	<property name="androjena.bin.dir" value="${androjena.dir}/bin" />
 	<property name="androjena.jar.dir" value="${androjena.dir}/dist" />
 	<property name="androjena.jar.path" value="${androjena.jar.dir}/androjena_${androjena.version}.jar" />
+	<property name="androjena.sources.jar.dir" value="${androjena.dir}/dist" />
+	<property name="androjena.sources.jar.path" value="${androjena.sources.jar.dir}/androjena_${androjena.version}_sources.jar" />
 	<property name="androjena.release.dir" value="${androjena.dir}/dist" />
 	<property name="androjena.release.path" value="${androjena.release.dir}/androjena_${androjena.version}.zip" />
 	<property name="androjena.lic.dir" value="${androjena.dir}/licenses" />
@@ -26,25 +29,34 @@
 	<property name="androjena.jar.etc.dir" value="etc" />
 	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
 	<property name="androjena.release.lib.dir" value="lib" />
+	<property name="androjena.release.src.dir" value="src" />
 	<property name="androjena.release.lic.dir" value="licenses" />
 	<target name="androjena-clean">
 		<delete dir="${androjena.jar.dir}" />
+		<delete dir="${androjena.sources.jar.dir}" />
 		<delete dir="${androjena.release.dir}" />
 	</target>
 	<target name="androjena-jar">
 		<mkdir dir="${androjena.jar.dir}" />
 		<jar destfile="${androjena.jar.path}">
-			<fileset dir="${androjena.bin.dir}" />
+			<fileset dir="${androjena.bin.dir}" includes="**/*.class" />
 			<zipfileset dir="${androjena.etc.dir}" prefix="${androjena.jar.etc.dir}" />
 			<zipfileset dir="${androjena.vocabularies.dir}" prefix="${androjena.jar.vocabularies.dir}" />
 		</jar>
 	</target>
-	<target name="androjena-release" depends="androjena-jar">
+	<target name="androjena-sources-jar">
+		<mkdir dir="${androjena.sources.jar.dir}" />
+		<jar destfile="${androjena.sources.jar.path}">
+			<fileset dir="${androjena.src.dir}" />
+		</jar>
+	</target>
+	<target name="androjena-release" depends="androjena-jar, androjena-sources-jar">
 		<zip destfile="${androjena.release.path}">
-			<zipfileset dir="${androjena.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset file="${androjena.jar.path}" />
+			<zipfileset file="${androjena.sources.jar.path}" />
 			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
 			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
-			<zipfileset dir="${androjena.dir}/." includes="README" />
+			<zipfileset file="README" />
 		</zip>
 	</target>
 	<target name="androjena-all" depends="androjena-release" />
