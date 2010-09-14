@@ -28,8 +28,6 @@
 	<property name="arqoid.androjena.dir" value="../androjena" />
 	<import file="${arqoid.androjena.dir}/build.xml" />
 	-->
-	<!--<property name="arqoid.slf4j.android.dir" value="../slf4j.android" />
-	<import file="${arqoid.slf4j.android.dir}/build.xml" />-->
 	<target name="arqoid-clean">
 		<delete dir="${arqoid.jar.dir}" />
 		<!--<delete dir="${arqoid.release.dir}" />-->
