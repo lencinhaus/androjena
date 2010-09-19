@@ -6,14 +6,18 @@
 
 package arq.cmdline;
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer ;
-import org.apache.lucene.index.IndexReader ;
-import org.apache.lucene.index.IndexWriter ;
-import org.apache.lucene.store.FSDirectory ;
-import arq.cmd.CmdException ;
+import java.io.File;
 
-import com.hp.hpl.jena.query.larq.ARQLuceneException ;
-import com.hp.hpl.jena.query.larq.IndexLARQ ;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
+
+import arq.cmd.CmdException;
+
+import com.hp.hpl.jena.query.larq.ARQLuceneException;
+import com.hp.hpl.jena.query.larq.IndexLARQ;
 
 public class ModLARQindex implements ArgModuleGeneral
 {
@@ -37,7 +41,9 @@ public class ModLARQindex implements ArgModuleGeneral
     public IndexLARQ getIndexLARQ()
     { 
         try {
-            FSDirectory dir = FSDirectory.getDirectory(luceneDir);
+        	//ANDROID: migration to lucene 3.0.2 with lucenoid
+//            FSDirectory dir = FSDirectory.getDirectory(luceneDir);
+        	FSDirectory dir = FSDirectory.open(new File(luceneDir));
             IndexReader indexReader = IndexReader.open(dir) ;
             return new IndexLARQ(indexReader) ;
         } catch (Exception ex)
@@ -47,8 +53,11 @@ public class ModLARQindex implements ArgModuleGeneral
     public IndexWriter getIndexWriter()
     {
         try {
-            FSDirectory dir = FSDirectory.getDirectory(luceneDir);
-            IndexWriter indexWriter = new IndexWriter(dir, new StandardAnalyzer()) ;
+        	//ANDROID: migration to lucene 3.0.2 with lucenoid
+//            FSDirectory dir = FSDirectory.getDirectory(luceneDir);
+//            IndexWriter indexWriter = new IndexWriter(dir, new StandardAnalyzer()) ;
+        	FSDirectory dir = FSDirectory.open(new File(luceneDir));
+            IndexWriter indexWriter = new IndexWriter(dir, new StandardAnalyzer(Version.LUCENE_23), true, IndexWriter.MaxFieldLength.UNLIMITED) ;
             return indexWriter ;
         } catch (Exception ex)
         { throw new ARQLuceneException("LARQ", ex) ; }
