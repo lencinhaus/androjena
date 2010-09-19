@@ -23,8 +23,10 @@ Jena IRI 0.7: licenses/jena_2.6.2_license.txt
 Apache Xerces: licenses/apache_software_license_2.0.txt
 GNU Classpath: licenses/gpl-3.0.txt
 Quality Open Software's SLF4J-android 1.6.1: licenses/slf4j_android_1.6.1_license.txt
-Androjena 0.2, based on Jena 2.6.2: licenses/jena_2.6.2_license.txt
-Lucenoid 3.0.2, based on Apache Lucene 3.0.2: licenses/apache_software_license_2.0.txt
+Androjena 0.2: licenses/apache_software_license_2.0.txt 
+Jena 2.6.2: licenses/jena_2.6.2_license.txt
+Lucenoid 3.0.2: licenses/apache_software_license_2.0.txt
+Apache Lucene 3.0.2: licenses/apache_software_license_2.0.txt
 
 -----------------------------------------------------------------------------------------------------------
 
