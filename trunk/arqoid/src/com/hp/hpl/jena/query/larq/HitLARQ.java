@@ -6,7 +6,10 @@
 
 package com.hp.hpl.jena.query.larq;
 
-import org.apache.lucene.search.Hit;
+import org.apache.lucene.document.Document;
+//ANDROID: migration to lucene 3.0.2 with lucenoid
+//import org.apache.lucene.search.Hit;
+import org.apache.lucene.search.ScoreDoc;
 
 import com.hp.hpl.jena.graph.Node;
 
@@ -16,12 +19,23 @@ public class HitLARQ
     protected float score ;
     protected int docId ;
 
-    public HitLARQ(Hit hit)
+ // ANDROID: migration to lucene 3.0.2 with lucenoid
+//    public HitLARQ(Hit hit)
+//    {
+//        try {
+//            node = LARQ.build(hit.getDocument()) ;
+//            score = hit.getScore() ;
+//            docId = hit.getId() ;
+//        }
+//        catch (Exception e)
+//        { throw new ARQLuceneException("node conversion error", e) ; }
+//    }
+    public HitLARQ(Document doc, ScoreDoc scoreDoc)
     {
         try {
-            node = LARQ.build(hit.getDocument()) ;
-            score = hit.getScore() ;
-            docId = hit.getId() ;
+            node = LARQ.build(doc) ;
+            score = scoreDoc.score ;
+            docId = scoreDoc.doc ;
         }
         catch (Exception e)
         { throw new ARQLuceneException("node conversion error", e) ; }

@@ -13,41 +13,50 @@
 		arqoid build file
     </description>
 
-	<property name="arqoid.version" value="0.1" />
-	<dirname property="arqoid.dir" file="${ant.file.arqoid}"/>
+	<property name="arqoid.version" value="0.2" />
+	<dirname property="arqoid.dir" file="${ant.file.arqoid}" />
+	<property name="arqoid.src.dir" value="${arqoid.dir}/src" />
 	<property name="arqoid.bin.dir" value="${arqoid.dir}/bin" />
 	<property name="arqoid.jar.dir" value="${arqoid.dir}/dist" />
 	<property name="arqoid.jar.path" value="${arqoid.jar.dir}/arqoid_${arqoid.version}.jar" />
-	<!--
+	<property name="arqoid.sources.jar.dir" value="${arqoid.dir}/dist" />
+	<property name="arqoid.sources.jar.path" value="${arqoid.sources.jar.dir}/arqoid_${arqoid.version}_sources.jar" />
 	<property name="arqoid.release.dir" value="${arqoid.dir}/dist" />
 	<property name="arqoid.release.path" value="${arqoid.release.dir}/arqoid_${arqoid.version}.zip" />
 	<property name="arqoid.lic.dir" value="${arqoid.dir}/licenses" />
-	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
 	<property name="arqoid.release.lib.dir" value="lib" />
 	<property name="arqoid.release.lic.dir" value="licenses" />
 	<property name="arqoid.androjena.dir" value="../androjena" />
 	<import file="${arqoid.androjena.dir}/build.xml" />
-	-->
+	<property name="arqoid.lucenoid.dir" value="../lucenoid" />
+	<import file="${arqoid.lucenoid.dir}/build.xml" />
 	<target name="arqoid-clean">
 		<delete dir="${arqoid.jar.dir}" />
-		<!--<delete dir="${arqoid.release.dir}" />-->
+		<delete dir="${arqoid.sources.jar.dir}" />
+		<delete dir="${arqoid.release.dir}" />
 	</target>
 	<target name="arqoid-jar">
 		<mkdir dir="${arqoid.jar.dir}" />
 		<jar destfile="${arqoid.jar.path}">
-			<fileset dir="${arqoid.bin.dir}" />
+			<fileset dir="${arqoid.bin.dir}" includes="**/*.class" />
 		</jar>
 	</target>
-	<!--
-	<target name="arqoid-release" depends="arqoid-jar, arqoid-jar">
-		<zip destfile="${androjena.release.path}">
-			<zipfileset dir="${androjena.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
-			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
-			<zipfileset dir="${slf4j.android.jar.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
-			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
-			<zipfileset dir="${androjena.dir}/." includes="README" />
+	<target name="arqoid-sources-jar">
+		<mkdir dir="${arqoid.sources.jar.dir}" />
+		<jar destfile="${arqoid.sources.jar.path}">
+			<fileset dir="${arqoid.src.dir}" />
+		</jar>
+	</target>
+	<target name="arqoid-release" depends="arqoid-jar, arqoid-sources-jar, androjena-jar, lucenoid-jar">
+		<zip destfile="${arqoid.release.path}">
+			<zipfileset file="${arqoid.jar.path}" />
+			<zipfileset file="${arqoid.sources.jar.path}" />
+			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${arqoid.release.lib.dir}" />
+			<zipfileset file="${androjena.jar.path}" prefix="${arqoid.release.lib.dir}" />
+			<zipfileset file="${lucenoid.jar.path}" prefix="${arqoid.release.lib.dir}" />
+			<zipfileset dir="${arqoid.lic.dir}" prefix="${arqoid.release.lic.dir}" />
+			<zipfileset file="README" />
 		</zip>
 	</target>
-	-->
-	<target name="arqoid-all" depends="arqoid-jar" />
+	<target name="arqoid-all" depends="arqoid-release" />
 </project>
