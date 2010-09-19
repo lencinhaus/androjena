@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     19/09/2010 20.34.02                                                       
+
+     Lucenoid   
+     Porting of Apache Lucene 3.0.2 to Android with some corrections.
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="lucenoid" default="lucenoid-all" basedir=".">
+	<description>
+            lucenoid build file
+    </description>
+
+	<property name="lucenoid.version" value="3.0.2" />
+	<dirname property="lucenoid.dir" file="${ant.file.lucenoid}"/>
+	<property name="lucenoid.bin.dir" value="${lucenoid.dir}/bin" />
+	<property name="lucenoid.jar.dir" value="${lucenoid.dir}/dist" />
+	<property name="lucenoid.jar.path" value="${lucenoid.jar.dir}/lucenoid_${lucenoid.version}.jar" />
+	<target name="lucenoid-clean">
+		<delete dir="${lucenoid.jar.dir}" />
+	</target>
+	<target name="lucenoid-jar">
+		<mkdir dir="${lucenoid.jar.dir}" />
+		<jar destfile="${lucenoid.jar.path}" basedir="${lucenoid.bin.dir}" includes="**/*.class" />
+	</target>
+	<target name="lucenoid-all" depends="lucenoid-jar" />
+</project>
