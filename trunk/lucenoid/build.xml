@@ -14,15 +14,25 @@
 
 	<property name="lucenoid.version" value="3.0.2" />
 	<dirname property="lucenoid.dir" file="${ant.file.lucenoid}"/>
+	<property name="lucenoid.src.dir" value="${lucenoid.dir}/src" />
 	<property name="lucenoid.bin.dir" value="${lucenoid.dir}/bin" />
 	<property name="lucenoid.jar.dir" value="${lucenoid.dir}/dist" />
 	<property name="lucenoid.jar.path" value="${lucenoid.jar.dir}/lucenoid_${lucenoid.version}.jar" />
+	<property name="lucenoid.sources.jar.dir" value="${lucenoid.dir}/dist" />
+	<property name="lucenoid.sources.jar.path" value="${lucenoid.sources.jar.dir}/lucenoid_${lucenoid.version}_sources.jar" />
 	<target name="lucenoid-clean">
 		<delete dir="${lucenoid.jar.dir}" />
+		<delete dir="${lucenoid.sources.jar.dir}" />
 	</target>
 	<target name="lucenoid-jar">
 		<mkdir dir="${lucenoid.jar.dir}" />
 		<jar destfile="${lucenoid.jar.path}" basedir="${lucenoid.bin.dir}" includes="**/*.class" />
 	</target>
-	<target name="lucenoid-all" depends="lucenoid-jar" />
+	<target name="lucenoid-sources-jar">
+		<mkdir dir="${lucenoid.sources.jar.dir}" />
+		<jar destfile="${lucenoid.sources.jar.path}">
+			<fileset dir="${lucenoid.src.dir}" />
+		</jar>
+	</target>
+	<target name="lucenoid-all" depends="lucenoid-jar, lucenoid-sources-jar" />
 </project>
