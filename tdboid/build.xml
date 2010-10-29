@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18/05/2010 02.11.38                                                        
+
+     TDBoid   
+     Porting of Hewlett-Packard's Jena TDB engine to Google Android platform
+                   
+     Lorenzo Carrara (lorecarra@gmail.com)
+     ====================================================================== -->
+<project name="tdboid" default="tdboid-all" basedir=".">
+	<description>
+            tdboid build file
+    </description>
+
+	<property name="tdboid.version" value="0.1" />
+	<dirname property="tdboid.dir" file="${ant.file.tdboid}"/>
+	<property name="tdboid.src.dir" value="${tdboid.dir}/src" />
+	<property name="tdboid.bin.dir" value="${tdboid.dir}/bin" />
+	<property name="tdboid.jar.dir" value="${tdboid.dir}/dist" />
+	<property name="tdboid.jar.path" value="${tdboid.jar.dir}/tdboid_${tdboid.version}.jar" />
+	<property name="tdboid.store.dir" value="${tdboid.dir}/Store" />
+	<property name="tdboid.jar.store.dir" value="Store" />
+	<property name="tdboid.sources.jar.dir" value="${tdboid.dir}/dist" />
+	<property name="tdboid.sources.jar.path" value="${tdboid.sources.jar.dir}/tdboid_${tdboid.version}_sources.jar" />
+	<!--
+	<property name="androjena.release.dir" value="${androjena.dir}/dist" />
+	<property name="androjena.release.path" value="${androjena.release.dir}/androjena_${androjena.version}.zip" />
+	<property name="androjena.lic.dir" value="${androjena.dir}/licenses" />
+	<property name="androjena.vocabularies.dir" value="${androjena.dir}/vocabularies" />
+	<property name="androjena.jar.vocabularies.dir" value="vocabularies" />
+	<property name="androjena.etc.dir" value="${androjena.dir}/etc" />
+	<property name="androjena.jar.etc.dir" value="etc" />
+	<property name="androjena.lib.dir" value="${androjena.dir}/lib" />
+	<property name="androjena.release.lib.dir" value="lib" />
+	<property name="androjena.release.src.dir" value="src" />
+	<property name="androjena.release.lic.dir" value="licenses" />
+	-->
+	<target name="tdboid-clean">
+		<delete dir="${tdboid.jar.dir}" />
+		<!--
+		<delete dir="${androjena.sources.jar.dir}" />
+		<delete dir="${androjena.release.dir}" />
+		-->
+	</target>
+	<target name="tdboid-jar">
+		<mkdir dir="${tdboid.jar.dir}" />
+		<jar destfile="${tdboid.jar.path}">
+			<fileset dir="${tdboid.bin.dir}" includes="**/*.class" />
+			<zipfileset dir="${tdboid.store.dir}" prefix="${tdboid.jar.store.dir}" />
+		</jar>
+	</target>
+	<target name="tdboid-sources-jar">
+		<mkdir dir="${tdboid.sources.jar.dir}" />
+		<jar destfile="${tdboid.sources.jar.path}">
+			<fileset dir="${tdboid.src.dir}" />
+		</jar>
+	</target>
+	<!--
+	<target name="androjena-release" depends="androjena-jar, androjena-sources-jar">
+		<zip destfile="${androjena.release.path}">
+			<zipfileset file="${androjena.jar.path}" />
+			<zipfileset file="${androjena.sources.jar.path}" />
+			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
+			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
+			<zipfileset file="README" />
+		</zip>
+	</target>
+	-->
+	<target name="tdboid-all" depends="tdboid-jar, tdboid-sources-jar" />
+</project>
