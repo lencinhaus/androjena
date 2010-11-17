@@ -12,7 +12,7 @@
             tdboid build file
     </description>
 
-	<property name="tdboid.version" value="0.1" />
+	<property name="tdboid.version" value="0.3" />
 	<dirname property="tdboid.dir" file="${ant.file.tdboid}"/>
 	<property name="tdboid.src.dir" value="${tdboid.dir}/src" />
 	<property name="tdboid.bin.dir" value="${tdboid.dir}/bin" />
@@ -22,6 +22,17 @@
 	<property name="tdboid.jar.store.dir" value="Store" />
 	<property name="tdboid.sources.jar.dir" value="${tdboid.dir}/dist" />
 	<property name="tdboid.sources.jar.path" value="${tdboid.sources.jar.dir}/tdboid_${tdboid.version}_sources.jar" />
+	<property name="tdboid.release.dir" value="${tdboid.dir}/dist" />
+	<property name="tdboid.release.path" value="${tdboid.release.dir}/tdboid_${tdboid.version}.zip" />
+	<property name="tdboid.lic.dir" value="${tdboid.dir}/licenses" />
+	<property name="tdboid.release.lib.dir" value="lib" />
+	<property name="tdboid.release.lic.dir" value="licenses" />
+	<property name="tdboid.androjena.dir" value="../androjena" />
+	<import file="${tdboid.androjena.dir}/build.xml" />
+	<property name="tdboid.lucenoid.dir" value="../lucenoid" />
+	<import file="${tdboid.lucenoid.dir}/build.xml" />
+	<property name="tdboid.arqoid.dir" value="../arqoid" />
+	<import file="${tdboid.arqoid.dir}/build.xml" />
 	<!--
 	<property name="androjena.release.dir" value="${androjena.dir}/dist" />
 	<property name="androjena.release.path" value="${androjena.release.dir}/androjena_${androjena.version}.zip" />
@@ -37,10 +48,8 @@
 	-->
 	<target name="tdboid-clean">
 		<delete dir="${tdboid.jar.dir}" />
-		<!--
-		<delete dir="${androjena.sources.jar.dir}" />
-		<delete dir="${androjena.release.dir}" />
-		-->
+		<delete dir="${tdboid.sources.jar.dir}" />
+		<delete dir="${tdboid.release.dir}" />
 	</target>
 	<target name="tdboid-jar">
 		<mkdir dir="${tdboid.jar.dir}" />
@@ -55,16 +64,17 @@
 			<fileset dir="${tdboid.src.dir}" />
 		</jar>
 	</target>
-	<!--
-	<target name="androjena-release" depends="androjena-jar, androjena-sources-jar">
-		<zip destfile="${androjena.release.path}">
-			<zipfileset file="${androjena.jar.path}" />
-			<zipfileset file="${androjena.sources.jar.path}" />
-			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${androjena.release.lib.dir}" />
-			<zipfileset dir="${androjena.lic.dir}" prefix="${androjena.release.lic.dir}" />
+	<target name="tdboid-release" depends="tdboid-jar, tdboid-sources-jar, arqoid-jar, androjena-jar, lucenoid-jar">
+		<zip destfile="${tdboid.release.path}">
+			<zipfileset file="${tdboid.jar.path}" />
+			<zipfileset file="${tdboid.sources.jar.path}" />
+			<zipfileset dir="${androjena.lib.dir}" includes="*.jar" prefix="${tdboid.release.lib.dir}" />
+			<zipfileset file="${androjena.jar.path}" prefix="${tdboid.release.lib.dir}" />
+			<zipfileset file="${lucenoid.jar.path}" prefix="${tdboid.release.lib.dir}" />
+			<zipfileset file="${arqoid.jar.path}" prefix="${tdboid.release.lib.dir}" />
+			<zipfileset dir="${tdboid.lic.dir}" prefix="${tdboid.release.lic.dir}" />
 			<zipfileset file="README" />
 		</zip>
 	</target>
-	-->
-	<target name="tdboid-all" depends="tdboid-jar, tdboid-sources-jar" />
+	<target name="tdboid-all" depends="tdboid-release" />
 </project>
