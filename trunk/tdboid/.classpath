@@ -6,7 +6,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/arqoid"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/lucenoid"/>
 	<classpathentry kind="lib" path="/androjena/lib/icu4j-3.4.4.jar"/>
-	<classpathentry kind="lib" path="/androjena/lib/iri-0.7.jar"/>
 	<classpathentry kind="lib" path="/androjena/lib/slf4j-android-1.6.1-RC1.jar"/>
+	<classpathentry kind="lib" path="/androjena/lib/iri-0.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
