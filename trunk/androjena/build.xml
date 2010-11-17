@@ -12,7 +12,7 @@
             androjena build file
     </description>
 
-	<property name="androjena.version" value="0.2" />
+	<property name="androjena.version" value="0.3" />
 	<dirname property="androjena.dir" file="${ant.file.androjena}"/>
 	<property name="androjena.src.dir" value="${androjena.dir}/src" />
 	<property name="androjena.bin.dir" value="${androjena.dir}/bin" />
