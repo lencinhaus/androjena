@@ -4,9 +4,9 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="lib" path="lib/icu4j-3.4.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/iri-0.7.jar"/>
-	<classpathentry kind="lib" path="lib/androjena_0.2.jar"/>
-	<classpathentry kind="lib" path="lib/androjena.test_0.2.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-android-1.6.1-RC1.jar"/>
+	<classpathentry kind="lib" path="lib/androjena_0.3.jar"/>
+	<classpathentry kind="lib" path="lib/androjena.test_0.3.jar"/>
+	<classpathentry kind="lib" path="lib/iri-0.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
