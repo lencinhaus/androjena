@@ -13,7 +13,7 @@
             androjena.test build file
     </description>
 
-	<property name="androjena.test.version" value="0.3" />
+	<property name="androjena.test.version" value="0.4" />
 	<dirname property="androjena.test.dir" file="${ant.file.androjena.test}"/>
 	<property name="androjena.test.bin.dir" value="${androjena.test.dir}/bin" />
 	<property name="androjena.test.jar.dir" value="${androjena.test.dir}/dist" />

@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="lib" path="/androjena/lib/icu4j-3.4.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/androjena"/>
 	<classpathentry kind="lib" path="/androjena/lib/slf4j-android-1.6.1-RC1.jar"/>
 	<classpathentry kind="lib" path="/androjena/lib/iri-0.8.jar"/>
+	<classpathentry kind="lib" path="/androjena/lib/icu4j-3.4.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
