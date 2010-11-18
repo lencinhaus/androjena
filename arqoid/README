@@ -18,12 +18,12 @@ licenses/arq_2.8.3_license.txt
 ARQoid ships with or contains code from several libraries. A list follows with library names and 
 location of respective licenses/copyright notices copies inside this distribution:
 
-IBM ICU4J 3.4.4: licenses/icu_1.8.1_and_later_license.htm
+IBM ICU4J 3.4.5: licenses/icu_1.8.1_and_later_license.htm
 Jena IRI 0.8: licenses/jena_2.6.2_license.txt
 Apache Xerces: licenses/apache_software_license_2.0.txt
 GNU Classpath: licenses/gpl-3.0.txt
 Quality Open Software's SLF4J-android 1.6.1: licenses/slf4j_android_1.6.1_license.txt
-Androjena 0.3: licenses/apache_software_license_2.0.txt 
+Androjena 0.4: licenses/apache_software_license_2.0.txt 
 Jena 2.6.2: licenses/jena_2.6.2_license.txt
 Lucenoid 3.0.2: licenses/apache_software_license_2.0.txt
 Apache Lucene 3.0.2: licenses/apache_software_license_2.0.txt
