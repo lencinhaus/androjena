@@ -12,7 +12,7 @@
             tdboid build file
     </description>
 
-	<property name="tdboid.version" value="0.3" />
+	<property name="tdboid.version" value="0.4" />
 	<dirname property="tdboid.dir" file="${ant.file.tdboid}"/>
 	<property name="tdboid.src.dir" value="${tdboid.dir}/src" />
 	<property name="tdboid.bin.dir" value="${tdboid.dir}/bin" />
