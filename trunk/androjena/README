@@ -18,7 +18,7 @@ licenses/jena_2.6.2_license.txt
 Androjena ships with or contains code from several libraries. A list follows with library names and 
 location of respective licenses/copyright notices copies inside this distribution:
 
-IBM ICU4J 3.4.4: licenses/icu_1.8.1_and_later_license.htm
+IBM ICU4J 3.4.5: licenses/icu_1.8.1_and_later_license.htm
 Jena IRI 0.8: licenses/jena_2.6.2_license.txt
 Apache Xerces: licenses/apache_software_license_2.0.txt
 GNU Classpath: licenses/gpl-3.0.txt
