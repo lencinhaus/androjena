@@ -42,7 +42,7 @@ import com.hp.hpl.jena.vocabulary.RDF ;
  */
 
 
-class XMLInputSAX extends SPARQLResult
+class XMLInputSAX extends SPARQLResult 
 {
     // See also XMLInputStAX, which is preferred.
     // SAX is not a streaming API - the SAX handler is called as fast as the 
