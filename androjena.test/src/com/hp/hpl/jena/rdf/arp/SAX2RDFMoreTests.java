@@ -53,7 +53,7 @@ public class SAX2RDFMoreTests extends TestCase {
 
 		RDFEHArray eh2 = new RDFEHArray();
 		//ANDROID: removed Xerces dependence
-		XMLReader saxParser = new ExpatReaderWrapper(SAXParserFactory.newInstance().newSAXParser().getXMLReader());
+		XMLReader saxParser = new ExpatReaderWrapper();
 //		XMLReader saxParser = new SAXParser();
 		
 		SAX2Model handler = SAX2Model.create("http://example.org/", m2,
