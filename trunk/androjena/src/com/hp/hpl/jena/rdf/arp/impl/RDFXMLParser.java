@@ -82,13 +82,9 @@ public class RDFXMLParser extends XMLHandler {
         try
         {
         	//ANDROID: changed to SAX1 expat parser, which supports a lexical handler
-        	return new RDFXMLParser(new ExpatReaderWrapper(SAXParserFactory.newInstance().newSAXParser().getXMLReader()));
+        	return new RDFXMLParser(new ExpatReaderWrapper());
 //        	System.setProperty("org.xml.sax.driver","org.xmlpull.v1.sax2.Driver");
 //        	return new RDFXMLParser(XMLReaderFactory.createXMLReader());
-        }
-        catch(ParserConfigurationException pcex)
-        {
-        	throw new RuntimeException("SAX parser configuration not supported", pcex);
         }
         catch(SAXException ex)
         {

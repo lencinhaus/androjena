@@ -36,6 +36,7 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.AttributesImpl;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 
 /**
@@ -238,8 +239,34 @@ public class ExpatReaderWrapper implements XMLReader {
 			this.localName = localName;
 		}
 	}
+	
+	public ExpatReaderWrapper() throws SAXException {
+		// initialize with an ExpatReader
+		XMLReader reader = null;
+		try {
+			reader = XMLReaderFactory.createXMLReader("org.apache.harmony.xml.ExpatReader");
+		}
+		catch(SAXException ex) {
+			// expat reader is not available
+			// fall back to the default XML reader
+			try {
+				reader = XMLReaderFactory.createXMLReader();
+			}
+			catch(SAXException ex2) {
+				// no default XML reader is set
+				// fall back to xmlpull sax2 driver
+				reader = XMLReaderFactory.createXMLReader("org.xmlpull.v1.sax2.Driver");
+			}
+		}
+		
+		init(reader);
+	}
 
 	public ExpatReaderWrapper(XMLReader expatReader) throws SAXException {
+		init(expatReader);
+	}
+	
+	private void init(XMLReader expatReader) throws SAXException {
 		if (expatReader == null)
 			throw new NullPointerException("expatReader cannot be null");
 		this.expatReader = expatReader;
