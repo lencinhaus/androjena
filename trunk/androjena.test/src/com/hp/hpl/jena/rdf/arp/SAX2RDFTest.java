@@ -1291,7 +1291,7 @@ public class SAX2RDFTest extends TestCase {
 
 	void loadXMLModel(Model m2, Reader in, RDFEHArray eh2) throws SAXException, IOException, ParserConfigurationException {
 		//ANDROID: removed Xerces dependence
-		XMLReader saxParser = new ExpatReaderWrapper(SAXParserFactory.newInstance().newSAXParser().getXMLReader());
+		XMLReader saxParser = new ExpatReaderWrapper();
 //		XMLReader saxParser = new SAXParser();
 		SAX2Model handler = SAX2Model.create(base, m2);
 		SAX2RDF.installHandlers(saxParser, handler);
