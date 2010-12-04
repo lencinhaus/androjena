@@ -13,7 +13,7 @@
 		arqoid build file
     </description>
 
-	<property name="arqoid.version" value="0.4" />
+	<property name="arqoid.version" value="0.5" />
 	<dirname property="arqoid.dir" file="${ant.file.arqoid}" />
 	<property name="arqoid.src.dir" value="${arqoid.dir}/src" />
 	<property name="arqoid.bin.dir" value="${arqoid.dir}/bin" />

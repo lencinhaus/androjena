@@ -6,6 +6,8 @@
 
 package com.hp.hpl.jena.sparql.resultset;
 
+import it.polimi.dei.dbgroup.pedigree.androjena.xml.ExpatReaderWrapper;
+
 import java.io.IOException ;
 import java.io.InputStream ;
 import java.util.ArrayList ;
@@ -64,7 +66,9 @@ class XMLInputSAX extends SPARQLResult
             model = GraphFactory.makeJenaDefaultModel() ;
 
         try {
-            XMLReader xr = XMLReaderFactory.createXMLReader() ;
+        	//ANDROID: using ExpatReaderWrapper XMLReader
+//            XMLReader xr = XMLReaderFactory.createXMLReader() ;
+        	XMLReader xr = new ExpatReaderWrapper();
             xr.setFeature("http://xml.org/sax/features/namespace-prefixes", true) ;
             //ResultSetXMLHandler1 handler = new ResultSetXMLHandler1() ;
             ResultSetXMLHandler2 handler = new ResultSetXMLHandler2() ;
