@@ -82,7 +82,7 @@ public class XSDDouble extends XSDDatatype {
 	}
 
 	// ANDROID: removed Xerces dependence, parsing and validation are done in
-	// android.jena.replacements.xsd classes
+	// it.polimi.dei.dbgroup.pedigree.androjena.xsd classes
 	// /**
 	// * Parse a validated lexical form. Subclasses which use the default
 	// * parse implementation and are not convered by the explicit
