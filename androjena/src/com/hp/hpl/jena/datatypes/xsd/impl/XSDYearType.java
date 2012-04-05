@@ -27,7 +27,7 @@ public class XSDYearType extends XSDAbstractDateTimeType {
 	}
 
 	// ANDROID: removed Xerces dependence, parsing and validation are done in
-	// android.jena.replacements.xsd classes
+	// it.polimi.dei.dbgroup.pedigree.androjena.xsd classes
 	// /**
 	// * Parse a validated date. This is invoked from
 	// * XSDDatatype.convertValidatedDataValue rather then from a local

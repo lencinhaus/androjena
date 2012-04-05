@@ -29,7 +29,7 @@ public class XSDMonthDayType extends XSDAbstractDateTimeType {
 	// size without time zone: --MM-DD
 	private final static int MONTHDAY_SIZE = 7;
 	// ANDROID: removed Xerces dependence, parsing and validation are done in
-	// android.jena.replacements.xsd classes
+	// it.polimi.dei.dbgroup.pedigree.androjena.xsd classes
 	// /**
 	// * Parse a validated date. This is invoked from
 	// * XSDDatatype.convertValidatedDataValue rather then from a local

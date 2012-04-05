@@ -32,7 +32,7 @@ public class XSDDayType extends XSDAbstractDateTimeType {
     //size without time zone: ---09
     private final static int DAY_SIZE=5;
 
-  //ANDROID: removed Xerces dependence, parsing and validation are done in android.jena.replacements.xsd classes
+  //ANDROID: removed Xerces dependence, parsing and validation are done in it.polimi.dei.dbgroup.pedigree.androjena.xsd classes
 //    /**
 //     * Parse a validated date. This is invoked from
 //     * XSDDatatype.convertValidatedDataValue rather then from a local
